@@ -72,4 +72,7 @@ class Files(models.Model):
     file = models.ImageField(upload_to='files/%Y/%m/%d')
     page = models.ForeignKey('Pages', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f"{self.page.header} - {self.label}"
+
         
