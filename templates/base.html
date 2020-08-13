@@ -1,0 +1,68 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block 'meta' %}{% endblock %}
+
+    <title>
+      {% if title %}
+        {{title}}
+      {% else %}
+        ООО "Красноярская Горная Компания"
+      {% endif %}
+    </title>
+
+    {% block 'subtitle' %}{% endblock %}
+
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+  </head>
+ 
+  <body>
+    <header>
+      <!-- задано статически, если появится необходимость регулярно менять
+        стрктуру, то лучше сделать подгрузку через middleware -->
+      <ul>
+        <li>О компании
+          <ul>
+            <li><a href="{% url 'simple-page' 'obshchie-svedeniia' %}">Общие сведения</a></li>
+            <li><a href="{% url 'simple-page' 'rukovodstvo' %}">Руководство</a></li>
+            <li><a href="{% url 'simple-page' 'dokumenty' %}">Документы</a></li>
+            <li><a href="{% url 'simple-page' 'kontakty' %}">Контакты</a></li>
+          </ul>
+        </li>
+        <li>Деятельность
+          <ul>
+            <li><a href="{% url 'simple-page' 'proektnaia-deiatelnost' %}">Проектная деятельность</a></li>
+            <li><a href="{% url 'simple-page' 'stroitelstvo' %}">Строительство</a></li>
+          </ul>
+        </li>
+        <li>Промышленная безопасность
+          <ul>
+            <li><a href="{% url 'simple-page' 'zaiavlenie-o-politike-ooo-kgk-v-oblasti-promyshlennoi-bezopasnosti' %}">Заявление о политике ООО "КГК" в области промышленной безопасности</a></li>
+            <li><a href="{% url 'simple-page' 'dokumenty-funktsionirovaniia-sistemy-upravleniia-promyshlennoi-bezopasnostiu' %}">Документы функционирования системы управления промышленной безопасностью</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="{% url 'simple-page' 'vakansii' %}">Вакансии</a>
+        </li>
+      </ul>
+    </header>
+    <div class="container">
+      {% block 'content' %}
+
+      {% endblock %}
+    </div>
+
+    {% block 'additional_js' %}
+    {% endblock %}
+  </body>
+</html>

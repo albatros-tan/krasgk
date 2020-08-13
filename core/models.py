@@ -1,5 +1,6 @@
 from django.db import models
 
+from ckeditor.fields import RichTextField
 from uuslug import slugify
 
 # Create your models here.
@@ -7,7 +8,7 @@ from uuslug import slugify
 class ServiceTable(models.Model):
     class Meta:
         verbose_name = "Сервисная таблица"
-        verbose_name_plural = "Сервисных записей"
+        verbose_name_plural = "Сервисные записи"
     label = models.CharField(default="New Note", max_length = 52)
     text = models.TextField()
 
@@ -20,8 +21,6 @@ class Pages(models.Model):
     class Meta:
         verbose_name = 'Страница'
         verbose_name_plural = 'Страницы'
-        ordering = ['priority']
-    priority = models.PositiveSmallIntegerField(default=1)
     title = models.CharField(max_length=255)
     header = models.CharField(max_length=255)
     slug = models.SlugField(verbose_name='URL', max_length=50, unique=True, blank=True)
@@ -31,7 +30,7 @@ class Pages(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.header
+        return f"{self.header} ({self.slug})"
 
 
 class Articles(models.Model):
@@ -41,8 +40,12 @@ class Articles(models.Model):
         verbose_name_plural = 'Статьи'
     header = models.CharField(max_length=155, blank=True, null=True,
         help_text='Опционально, когда для статьи необходимо выделить заголовок в отрыве от основной html разметки')
-    text = models.TextField()
+    #text = models.TextField()
+    text = RichTextField()
     page = models.ForeignKey('Pages', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.page.header} - {self.header}"
 
 
 class Images(models.Model):
@@ -54,6 +57,9 @@ class Images(models.Model):
         help_text='Опционально, подпись к изображению')
     image = models.ImageField(upload_to='img/%Y/%m/%d')
     page = models.ForeignKey('Pages', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.page.header} - {self.label}"
 
 
 class Files(models.Model):
