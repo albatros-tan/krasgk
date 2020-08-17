@@ -2,36 +2,61 @@
 {% load static from staticfiles %}
 
 {% block 'content' %}
+<div class="container-fluid no-padding simple-page">
+    
+
 <!-- Здесь размещаем  текстовый контент -->
 {% for article in articles %}
     {% if article.header %}
-        <h3>{{article.header}}</h3>
+        <div class="container page-header">{{article.header}}</div>
     {% endif %}
-    <div>
+    <div class="container">
         {% autoescape off %}
           {{article.text}}
         {% endautoescape %}
     </div>
 {% endfor %}
 <!-- Здесь размещаем  картинки -->
-{% if images %}
-  <h3>Изображения</h3>
-  {% for image in images %}
-    {% if image.label %}
-      <label>{{ image.label }}</label>
-    {% endif %}
-    <img src={{ image.image.url }} alt='{{ image.label | default_if_none:"изображение"}}'>
-  {% endfor %}
+{% if albums %}
+    <div class="container">
+        <hr>
+      <h1>Изображения</h1>
+      <hr>
+      {% for row in albums %}
+      <div class="card-deck-wrapper">
+        <div class="card-deck">
+            {% for image in row %}
+          <div class="card ">
+            <div class="card-img-div">
+                
+            <img class="card-img-top" src={{ image.skin.url }} alt='{{ image.label | default_if_none:"изображение"}}'>
+            </div>
+          <div class="card-block">
+            {% if image.label %}
+            <p class="card-text">{{ image.label }}</p>
+            {% endif %}
+            <a href="{% url 'album-page' image.id %}" class="btn btn-secondary">Просмотр альбома</a>
+          </div>
+            </div>
+          {% endfor %}
+    </div></div>
+      {% endfor %}
+</div>
 {% endif %}
 <!-- Здесь размещаем  прикрепленные файлы -->
 {% if files %}
-  <h3>Файлы</h3>
+    <div class="container">
+        <hr>
+  <h1>Файлы</h1>
+  <hr>
   {% for file in files %}
-  <p>
+  <p class="accent-paragraph">
     <!--вероятно стоит добавить какую-то иконку, обозначающую файл -->
+    <i class="far fa-file"></i>&nbsp;
     <a href="{{file.file.url}}" target="blank">{{ file.label | default_if_none:"изображение"}}</a>
   </p>
   {% endfor %}
+</div>
 {% endif %}
-
+</div>
 {% endblock %}

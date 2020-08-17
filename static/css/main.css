@@ -1,0 +1,250 @@
+/* COLORS */
+.main-color{
+	color: #618199;
+}
+.dark-color{
+	color: #214764;
+}
+
+
+img{
+	max-width: 100%;
+}
+.no-padding{
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+html,body{
+	min-height: 100vh;
+	position: relative;
+}
+/* HEADER */
+header{
+	text-transform: uppercase;
+	background: #618199;
+	color: white;
+}
+header .nav{
+		float: right;
+	}
+header a, header a:active, header a:focus, header a:hover{
+	color: white;
+}
+header .nav-item.open, header .nav-link{
+	background-color: #618199 !important;
+}
+header .nav-item.open{
+	text-decoration: underline;
+}
+header .dropdown-item a{
+	max-width: 480px;
+	white-space: pre-wrap;
+	overflow: auto;
+	color: #618199;
+}
+header .dropdown-item{
+	width: 500px;
+}
+#pre-body{
+	overflow-y: hidden;
+	background: url('img/top_fon.jpg');
+}
+#pre-body .titling{
+	padding: 18px 0 0px 0;
+	font-weight: 600;
+	font-size: 2.2em;
+	color: #214764;
+	float: right;
+}
+#pre-body .subtitle{
+	font-size: 1.1em;
+	text-transform: uppercase;
+	float: right;
+	padding: 0;
+	color: #999;
+}
+#header_logo{
+	z-index: 999;
+	float: left;
+	display: block;
+	margin: 12px 24px;
+	height: 90px;
+}
+/* FOOTER */
+footer{
+	background: #618199;
+	color: white;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	font-size: 0.8em;
+	line-height: 2em;
+	text-align: right;
+}
+/* MAIN PAGE */
+.direction_item{
+	border-bottom: solid 3px #618199;
+	text-align: center;
+	box-sizing: border-box;
+}
+.direction_item div{
+	margin: auto;
+	width: 75%;
+	padding: 24px;
+}
+.direction_item i{
+	font-size: 5em;
+}
+.direction_item p{
+	font-size: 1.2em;
+	text-transform: uppercase;
+	padding: 24px 0 0 0;
+	margin: 0;
+}
+.direction_item.dark:hover{
+	background: #71A2C8;
+	border-color: #71A2C8;
+}
+.direction_item.light:hover{
+	background: #C6E2F8;
+	border-color: #C6E2F8;
+}
+.purpose{
+	font-size: 1.2em;
+}
+.principle{
+	text-align: center;
+	font-size: 0.8em;
+	padding: 6px;
+}
+.principle div{
+	border-radius: 12px;
+	padding: 12px;
+}
+.principle div i{
+	font-size: 4em;
+	margin-bottom: 12px;
+	color: #618199;
+}
+.principle.dark div i{
+	color: white;
+}
+/* BASIC */
+.main{
+	padding-bottom: 36px;
+}
+.text-block{
+	padding: 24px 0;
+}
+.uppercase{
+	text-transform: uppercase;
+}
+.accent{
+	font-size: 2em;
+	text-align: center;
+	color: #214764;
+	font-weight: 700;
+}
+.accent-light{
+	font-size: 1.2em;
+	font-weight: 600;
+	text-align: justify;
+}
+.accent-paragraph{
+	text-transform: uppercase;
+	color: #333;
+	margin: 12px 0 24px 0;
+}
+strong{
+	color: #618199;
+}
+.dark{
+	background: #618199;
+	color: white !important;
+}
+.light{
+	background: white;
+	border-color: #618199;
+	color: #618199 !important;
+}
+/* CAROUSEL */
+#carousel-example-generic{
+	height: 480px;
+	overflow: hidden;
+	position: relative;
+}
+#carousel-example-generic img{
+  object-fit: cover;
+  object-position: top center;
+  height: 100%;
+  width: 100%;
+}
+.carousel-inner, .carousel-item{
+	height: 100%;
+}
+.carousel-caption{
+	position: absolute;
+	left: 0;
+	bottom: 24px;
+	width: 100%;
+	padding: 2px 12px 2px 48px ;
+	background: rgba(255,255,255,0.7);
+	font-size: 0.7em;
+	text-align: left;
+	text-shadow: none;
+}
+.carousel-caption p{
+	margin-bottom: 0;
+}
+.carousel-caption a{
+	color: #1A2833;
+	text-decoration: none;
+}
+.carousel-caption a:hover{
+	text-decoration: underline;
+}
+.carousel-indicators {
+bottom: -16px;
+}
+/* SIMPLE PAGE */
+.simple-page .page-header{
+	font-size: 2em;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #214764;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	width: 100%;
+	margin-top: 24px;
+	margin-bottom: 24px;
+	line-height: 2em;
+}
+.simple-page h1{
+	font-size: 1.4em;
+	font-weight: 400;
+	color: #618199;
+	text-transform: uppercase;
+	margin: 12px 0;
+}
+.card-img-div{
+	height: 25vh;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.card-img-div img{
+  object-fit: cover;
+  object-position: center center;
+  height: 100%;
+  width: 100%;
+}
+.image-preview:hover{
+	border: 1px solid #618199;
+	cursor: pointer;
+}
+.modal-content{
+	width: 50vw;
+	height: 75vh;
+	margin: auto;
+}

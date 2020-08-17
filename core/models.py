@@ -48,6 +48,20 @@ class Articles(models.Model):
         return f"{self.page.header} - {self.header}"
 
 
+class Albums(models.Model):
+    '''Альбомы'''
+    class Meta:
+        verbose_name = 'Альбом'
+        verbose_name_plural = 'Альбомы'
+    label = models.CharField(max_length=255, blank=True, null=True,
+        help_text='Название альбома')
+    skin = models.ImageField(upload_to='img/%Y/%m/%d', help_text='Обложка')
+    page = models.ForeignKey('Pages', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.label
+
+
 class Images(models.Model):
     """Изображения на странице"""
     class Meta:
@@ -56,10 +70,10 @@ class Images(models.Model):
     label = models.CharField(max_length=155, blank=True, null=True,
         help_text='Опционально, подпись к изображению')
     image = models.ImageField(upload_to='img/%Y/%m/%d')
-    page = models.ForeignKey('Pages', on_delete=models.CASCADE)
+    album = models.ForeignKey('Albums', on_delete=models.CASCADE, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.page.header} - {self.label}"
+        return f"{self.album.label} - {self.label}"
 
 
 class Files(models.Model):
@@ -69,7 +83,7 @@ class Files(models.Model):
         verbose_name_plural = 'Файлы'
     label = models.CharField(max_length=155, blank=True, null=True,
         help_text='Опционально, подпись к файлу')
-    file = models.ImageField(upload_to='files/%Y/%m/%d')
+    file = models.FileField(upload_to='files/%Y/%m/%d')
     page = models.ForeignKey('Pages', on_delete=models.CASCADE)
 
     def __str__(self):

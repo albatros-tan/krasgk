@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block 'content' %}
+<div class="container-fluid no-padding simple-page">
+
+    <div class="container page-header">
+      {{object.label}}
+  </div>
+  <div class="container">
+  	{% for row in images %}
+      <div class="card-deck-wrapper">
+        <div class="card-deck">
+{% for image in row %}
+	<div class="card image-preview" data-toggle="modal" data-target=".bd-example-modal-lg">
+            <div class="card-img-div">
+                <img class="card-img-top" src={{ image.image.url }} alt='{{ image.label | default_if_none:"изображение"}}'  >
+
+            
+            </div>
+          <div class="card-block">
+            {% if image.label %}
+            <p class="card-text">{{ image.label }}</p>
+            {% endif %}
+          </div>
+            </div>
+          {% endfor %}
+    </div></div>
+{% endfor %}
+</div>
+</div>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      Picture
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+<script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer>
+	$('#myModal').modal();
+</script>

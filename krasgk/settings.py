@@ -141,3 +141,8 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+# переменные для отображения в шаблонизаторе
+COUNT_ALBUIMS_IN_ROWS = 3
+COUNT_IMAGES_IN_ROWS = 5
+
+
