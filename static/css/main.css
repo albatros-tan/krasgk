@@ -6,6 +6,21 @@
 	color: #214764;
 }
 
+.new_main_color{
+	color: #008CAD;
+}
+.new_dark_color{
+	color: #003743;
+}
+.new_light_color{
+	color: #70D8F0;
+}
+.new_light_accent{
+	color: #AEE4F1;
+}
+.new_dark_accent{
+	color: #40B9D5;
+}
 
 img{
 	max-width: 100%;
@@ -14,24 +29,28 @@ img{
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 }
+.centeres{
+	text-align: center;
+}
 html,body{
 	min-height: 100vh;
 	position: relative;
+	background: linear-gradient(90deg, #fff 0, #fff 30%, #D5E4F0);
 }
 /* HEADER */
 header{
 	text-transform: uppercase;
-	background: #618199;
+	background: #008CAD;
 	color: white;
 }
-header .nav{
-		float: right;
-	}
 header a, header a:active, header a:focus, header a:hover{
 	color: white;
 }
+header .nav{
+	float: right;
+}
 header .nav-item.open, header .nav-link{
-	background-color: #618199 !important;
+	background-color: #008CAD !important;
 }
 header .nav-item.open{
 	text-decoration: underline;
@@ -40,21 +59,35 @@ header .dropdown-item a{
 	max-width: 480px;
 	white-space: pre-wrap;
 	overflow: auto;
-	color: #618199;
+	color: #008CAD;
 }
 header .dropdown-item{
 	width: 500px;
 }
+header .nav-stacked .dropdown-item{
+	width: 100%;
+}
+header .nav-stacked .dropdown-item a{
+	max-width: 100%;
+}
 #pre-body{
 	overflow-y: hidden;
-	background: url('img/top_fon.jpg');
+	background: linear-gradient(90deg, #fff 0, #fff 50%, #D5E4F0);
 }
 #pre-body .titling{
-	padding: 18px 0 0px 0;
-	font-weight: 600;
+	padding: 18px 0 12px 0;
+	font-weight: 700;
 	font-size: 2.2em;
-	color: #214764;
+	color: #003743;
 	float: right;
+	text-transform: uppercase;
+}
+
+.titling a{
+	color: #003743 !important;
+}
+.titling a:hover{
+	text-decoration: none;
 }
 #pre-body .subtitle{
 	font-size: 1.1em;
@@ -65,14 +98,25 @@ header .dropdown-item{
 }
 #header_logo{
 	z-index: 999;
-	float: left;
 	display: block;
-	margin: 12px 24px;
-	height: 90px;
+	margin: 12px auto;
+}
+.hamburger{
+	font-size: 1.4em;
+	padding: 12px;
+	display: none;
+}
+
+.nav-item.menu-mobile{
+	display: none;
+	padding: 0;
+}
+.nav-item.menu-mobile a{
+	font-size: 1.2em;
 }
 /* FOOTER */
 footer{
-	background: #618199;
+	background: #008CAD;
 	color: white;
 	position: absolute;
 	left: 0;
@@ -84,7 +128,7 @@ footer{
 }
 /* MAIN PAGE */
 .direction_item{
-	border-bottom: solid 3px #618199;
+	border-bottom: solid 3px #008CAD;
 	text-align: center;
 	box-sizing: border-box;
 }
@@ -103,12 +147,11 @@ footer{
 	margin: 0;
 }
 .direction_item.dark:hover{
-	background: #71A2C8;
-	border-color: #71A2C8;
+	background: #40B9D5;
+	border-color: #40B9D5;
 }
 .direction_item.light:hover{
-	background: #C6E2F8;
-	border-color: #C6E2F8;
+	background: #fff;
 }
 .purpose{
 	font-size: 1.2em;
@@ -125,7 +168,7 @@ footer{
 .principle div i{
 	font-size: 4em;
 	margin-bottom: 12px;
-	color: #618199;
+	color: #003743;
 }
 .principle.dark div i{
 	color: white;
@@ -143,7 +186,7 @@ footer{
 .accent{
 	font-size: 2em;
 	text-align: center;
-	color: #214764;
+	color: #003743;
 	font-weight: 700;
 }
 .accent-light{
@@ -157,16 +200,15 @@ footer{
 	margin: 12px 0 24px 0;
 }
 strong{
-	color: #618199;
+	color: #333;
 }
 .dark{
-	background: #618199;
+	background: #008CAD;
 	color: white !important;
 }
 .light{
-	background: white;
-	border-color: #618199;
-	color: #618199 !important;
+	border-color: #008CAD;
+	color: #008CAD !important;
 }
 /* CAROUSEL */
 #carousel-example-generic{
@@ -209,10 +251,10 @@ bottom: -16px;
 }
 /* SIMPLE PAGE */
 .simple-page .page-header{
-	font-size: 2em;
+	font-size: 1.8em;
 	font-weight: 600;
 	text-transform: uppercase;
-	color: #214764;
+	color: #003743;
 	border-top: 1px solid #999;
 	border-bottom: 1px solid #999;
 	width: 100%;
@@ -221,11 +263,14 @@ bottom: -16px;
 	line-height: 2em;
 }
 .simple-page h1{
-	font-size: 1.4em;
+	font-size: 1.2em;
 	font-weight: 400;
-	color: #618199;
+	color: #008CAD;
 	text-transform: uppercase;
 	margin: 12px 0;
+}
+.simple-page li{
+	padding-bottom: 12px;
 }
 .card-img-div{
 	height: 25vh;
@@ -233,18 +278,131 @@ bottom: -16px;
 	overflow: hidden;
 	position: relative;
 }
+.card-img-div.fullscreen{
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 3vh 3vw;
+	background: rgba(99,99,99,0.7);
+}
+.card-fullscreen-label{
+	position: fixed;
+	left: 0;
+	bottom: 5vh;
+	color: #333;
+	background: white;
+	width: 100%;
+	padding: 0 20vw;
+	display: none;
+}
+.card-img-div.fullscreen .card-fullscreen-label{
+	display: block;
+}
 .card-img-div img{
   object-fit: cover;
   object-position: center center;
   height: 100%;
   width: 100%;
 }
+.card-img-div.fullscreen img{
+	object-fit: contain;
+}
 .image-preview:hover{
-	border: 1px solid #618199;
+	border: 1px solid #008CAD;
 	cursor: pointer;
 }
 .modal-content{
 	width: 50vw;
 	height: 75vh;
 	margin: auto;
+}
+
+/* ADAPTIVE */
+
+@media (max-width: 1199px){
+	#pre-body .titling{
+	font-size: 1.8em;
+	padding-bottom: 6px;
+	}
+}
+
+@media (max-width: 991px) {
+	#carousel-example-generic{
+		height: 240px;
+	}
+	#pre-body .titling{
+	font-size: 1.4em;
+	line-height: 1.2em;
+	padding-bottom: 3px;
+	}
+	#pre-body .subtitle{
+		font-size: 0.8em;
+		padding-bottom: 24px;
+	}
+	header .nav{
+		float: left;
+	}
+	.hamburger{
+		background: #008CAD;
+		width: 100vw;
+		display: block;
+	}
+}
+
+@media (max-width: 543px) {
+	br{
+		display: none;
+	}
+	.container{
+		padding: 12px;
+	}
+	header{
+		background: none;
+	}
+	#pre-body{
+		border-top: 12px solid #008CAD;
+	}
+	.principle div{
+		font-size: 1.2em;
+		text-transform: uppercase;
+		font-weight: 600;
+		text-align: center;
+		padding: 3px 24px 12px 24px;
+	}
+	.principles .principle div{
+		border-bottom: 1px solid #AEE4F1;
+		border-radius: 0px;
+		text-align: right;
+		font-size: 1em;
+	}
+	.principle div i{
+	font-size: 2em;
+	margin-bottom: 12px;
+	color: #003743;
+	float: left;
+	margin-right: 12px;
+	}
+	.principles i{
+		line-height: 2em;
+	}
+	.direction_item div{
+		padding: 12px 6px;
+	}
+	.direction_item i{
+		font-size: 2em;
+	}
+	.direction_item p{
+		font-size: 1em;
+		padding: 6px;
+	}
+	.accent{
+		font-size: 1.4em;
+	}
+	.simple-page .page-header{
+		font-size: 1.4em;
+		line-height: 1.1em;
+	}
 }

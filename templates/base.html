@@ -36,11 +36,13 @@
   <body>
     <div id='pre-body' class="container-fluid">
       <div class='container'>
-        <a href="/">
+        <a href="/" class="hidden-sm-down col-md-2">
           <img id='header_logo' src="{% static 'img/logo.jpg'%}" alt="">
         </a>
         <div class='titling'>
-          ООО "КРАСНОЯРСКАЯ ГОРНАЯ КОМПАНИЯ"
+        <a href="/">
+          ООО "Красноярская Горная Компания"
+        </a>
         </div>
         <div class="subtitle">
           Профессионализм. Качество. Ответственность.
@@ -50,10 +52,13 @@
     <header>
       <!-- задано статически, если появится необходимость регулярно менять
         стрктуру, то лучше сделать подгрузку через middleware -->
-
+        
+        <div class='hamburger' onclick="$('.menu-mobile').toggle();">
+          <i class="far fa-bars"></i>
+        </div>
     <div class="container">
-      <ul class='nav nav-pills'>
-        <li class='nav-item'>
+      <ul class='nav nav-pills hidden-md-down'>
+        <li class='nav-item hidden-lg-down'>
           <a class='nav-link' href="/"><i class="fas fa-home"></i></a>
         </li>
         <li class='nav-item dropdown'>
@@ -79,6 +84,9 @@
             <li class='dropdown-item'>
               <a href="{% url 'simple-page' 'stroitelstvo' %}">Строительство</a>
             </li>
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'postavki-oborudovaniia' %}">Поставки оборудования</a>
+            </li>
           </ul>
         </li>
         <li class='nav-item dropdown'>
@@ -96,6 +104,54 @@
           <a class='nav-link' href="{% url 'simple-page' 'vakansii' %}">Вакансии</a>
         </li>
         <li class='nav-item'>
+          <a class='nav-link' href="{% url 'simple-page' 'kontakty' %}">Контакты</a>
+        </li>
+      </ul>
+
+      <ul class='nav nav-pills nav-stacked hidden-lg-up'>
+        <li class='nav-item dropdown menu-mobile'>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">О компании</a>
+          <ul class="dropdown-menu">
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'obshchie-svedeniia' %}">Общие сведения</a>
+            </li>
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'rukovodstvo' %}">Руководство</a>
+            </li>
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'dokumenty' %}">Документы</a>
+            </li>
+          </ul>
+        </li>
+        <li class='nav-item dropdown menu-mobile'>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Деятельность</a>
+          <ul class="dropdown-menu">
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'proektnaia-deiatelnost' %}">Проектная деятельность</a>
+            </li>
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'stroitelstvo' %}">Строительство</a>
+            </li>
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'postavki-oborudovaniia' %}">Поставки оборудования</a>
+            </li>
+          </ul>
+        </li>
+        <li class='nav-item dropdown menu-mobile'>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Промышленная безопасность</a>
+          <ul class="dropdown-menu">
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'zaiavlenie-o-politike-ooo-kgk-v-oblasti-promyshlennoi-bezopasnosti' %}">Заявление о политике ООО "КГК" в области промышленной безопасности</a>
+            </li>
+            <li class='dropdown-item'>
+              <a href="{% url 'simple-page' 'dokumenty-funktsionirovaniia-sistemy-upravleniia-promyshlennoi-bezopasnostiu' %}">Документы функционирования системы управления промышленной безопасностью</a>
+            </li>
+          </ul>
+        </li>
+        <li class='nav-item  menu-mobile'>
+          <a class='nav-link' href="{% url 'simple-page' 'vakansii' %}">Вакансии</a>
+        </li>
+        <li class='nav-item  menu-mobile'>
           <a class='nav-link' href="{% url 'simple-page' 'kontakty' %}">Контакты</a>
         </li>
       </ul>

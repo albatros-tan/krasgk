@@ -12,10 +12,15 @@
       <div class="card-deck-wrapper">
         <div class="card-deck">
 {% for image in row %}
-	<div class="card image-preview" data-toggle="modal" data-target=".bd-example-modal-lg">
+	<div class="card col-xs-6 col-md-3 no-padding image-preview" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="$(this).children().toggleClass('fullscreen');">
             <div class="card-img-div">
                 <img class="card-img-top" src={{ image.image.url }} alt='{{ image.label | default_if_none:"изображение"}}'  >
-
+                <div class="card-fullscreen-label">
+                	{% if image.label %}
+                	{{ image.label }}
+                	{% endif %}
+                	<span style="font-size: 0.8em;">(Нажмите на картинку для закрытия)</span>
+                </div>
             
             </div>
           <div class="card-block">
@@ -29,13 +34,13 @@
 {% endfor %}
 </div>
 </div>
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<!--<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       Picture
     </div>
   </div>
-</div>
+</div>-->
 
 {% endblock %}
 <script src="/javascripts/application.js" type="text/javascript" charset="utf-8" async defer>

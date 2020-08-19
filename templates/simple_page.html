@@ -23,23 +23,41 @@
       <h1>Изображения</h1>
       <hr>
       {% for row in albums %}
-      <div class="card-deck-wrapper">
-        <div class="card-deck">
-            {% for image in row %}
-          <div class="card ">
-            <div class="card-img-div">
-                
-            <img class="card-img-top" src={{ image.skin.url }} alt='{{ image.label | default_if_none:"изображение"}}'>
-            </div>
-          <div class="card-block">
-            {% if image.label %}
-            <p class="card-text">{{ image.label }}</p>
-            {% endif %}
-            <a href="{% url 'album-page' image.id %}" class="btn btn-secondary">Просмотр альбома</a>
+      {% if row|length == 1 %}
+
+                {% for image in row %}
+                <div class="card col-xs-12 col-md-4 no-padding">
+                <div class="card-img-div">
+                    
+                <img class="card-img-top" src={{ image.skin.url }} alt='{{ image.label | default_if_none:"изображение"}}'>
+                </div>
+              <div class="card-block">
+                {% if image.label %}
+                <p class="card-text">{{ image.label }}</p>
+                {% endif %}
+                <a href="{% url 'album-page' image.id %}" class="btn btn-secondary">Просмотр альбома</a>
+              </div>
           </div>
-            </div>
-          {% endfor %}
-    </div></div>
+              {% endfor %}
+      {% else %}
+            <div class="card-deck-wrapper">
+                <div class="card-deck">
+                {% for image in row %}
+              <div class="card ">
+                <div class="card-img-div">
+                    
+                <img class="card-img-top" src={{ image.skin.url }} alt='{{ image.label | default_if_none:"изображение"}}'>
+                </div>
+              <div class="card-block">
+                {% if image.label %}
+                <p class="card-text">{{ image.label }}</p>
+                {% endif %}
+                <a href="{% url 'album-page' image.id %}" class="btn btn-secondary">Просмотр альбома</a>
+              </div>
+                </div>
+              {% endfor %}
+            </div></div>
+    {% endif %}
       {% endfor %}
 </div>
 {% endif %}
