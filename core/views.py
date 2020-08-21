@@ -1,11 +1,33 @@
+import random
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.conf import settings
 
 from .models import Pages, Articles, Images, Files, Albums
 
 # Create your views here.
+
+
+class MainPage(TemplateView):
+    """Главная страница, отличается в первую очередь подгрузкой
+    картинок для слайдера
+
+    """
+    template_name = "main.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        images_in_slider = list(Images.objects.filter(show_in_slider=True))
+        if settings.COUNT_IMAGES_IN_SLIDER < len(images_in_slider):
+            context["images"] = random.sample(
+                images_in_slider, settings.COUNT_IMAGES_IN_SLIDER)
+        else:
+            context["images"] = images_in_slider
+        return context        
+
 
 class SimplePage(DetailView):
     """Представление для обычной страницы"""

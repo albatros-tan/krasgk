@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.middleware.ButtonsMenu',
 ]
 
 ROOT_URLCONF = 'krasgk.urls'
@@ -141,8 +142,10 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-# переменные для отображения в шаблонизаторе
+#=== переменные для отображения в шаблонизаторе
 COUNT_ALBUIMS_IN_ROWS = 3
 COUNT_IMAGES_IN_ROWS = 4
+# кол-во картинок в слайдере (за исключением главной)
+COUNT_IMAGES_IN_SLIDER = 3
 
 

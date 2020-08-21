@@ -13,8 +13,8 @@
     {% block 'meta' %}{% endblock %}
 
     <title>
-      {% if title %}
-        {{title}}
+      {% if object.title %}
+        {{object.title}}
       {% else %}
         ООО "Красноярская Горная Компания"
       {% endif %}
@@ -50,8 +50,6 @@
       </div>
     </div>
     <header>
-      <!-- задано статически, если появится необходимость регулярно менять
-        стрктуру, то лучше сделать подгрузку через middleware -->
         
         <div class='hamburger' onclick="$('.menu-mobile').toggle();">
           <i class="far fa-bars"></i>
@@ -61,99 +59,24 @@
         <li class='nav-item hidden-lg-down'>
           <a class='nav-link' href="/"><i class="fas fa-home"></i></a>
         </li>
-        <li class='nav-item dropdown'>
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">О компании</a>
-          <ul class="dropdown-menu">
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'obshchie-svedeniia' %}">Общие сведения</a>
+        {% for key, val in menu.items %}
+          {% if val|length_is:"1" %}
+            <li class='nav-item'>
+              <a class='nav-link' href="{% url 'simple-page' val.0.slug %}">{{val.0.name_in_menu}}</a>
             </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'rukovodstvo' %}">Руководство</a>
+          {% else %}
+            <li class='nav-item dropdown'>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{key}}</a>
+              <ul class="dropdown-menu">
+                {% for btn in val%}
+                <li class='dropdown-item'>
+                  <a href="{% url 'simple-page' btn.slug %}">{{btn.name_in_menu}}</a>
+                </li>
+                {% endfor %}
+              </ul>
             </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'dokumenty' %}">Документы</a>
-            </li>
-          </ul>
-        </li>
-        <li class='nav-item dropdown'>
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Деятельность</a>
-          <ul class="dropdown-menu">
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'proektnaia-deiatelnost' %}">Проектная деятельность</a>
-            </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'stroitelstvo' %}">Строительство</a>
-            </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'postavki-oborudovaniia' %}">Поставки оборудования</a>
-            </li>
-          </ul>
-        </li>
-        <li class='nav-item dropdown'>
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Промышленная безопасность</a>
-          <ul class="dropdown-menu">
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'zaiavlenie-o-politike-ooo-kgk-v-oblasti-promyshlennoi-bezopasnosti' %}">Заявление о политике ООО "КГК" в области промышленной безопасности</a>
-            </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'dokumenty-funktsionirovaniia-sistemy-upravleniia-promyshlennoi-bezopasnostiu' %}">Документы функционирования системы управления промышленной безопасностью</a>
-            </li>
-          </ul>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link' href="{% url 'simple-page' 'vakansii' %}">Вакансии</a>
-        </li>
-        <li class='nav-item'>
-          <a class='nav-link' href="{% url 'simple-page' 'kontakty' %}">Контакты</a>
-        </li>
-      </ul>
-
-      <ul class='nav nav-pills nav-stacked hidden-lg-up'>
-        <li class='nav-item dropdown menu-mobile'>
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">О компании</a>
-          <ul class="dropdown-menu">
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'obshchie-svedeniia' %}">Общие сведения</a>
-            </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'rukovodstvo' %}">Руководство</a>
-            </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'dokumenty' %}">Документы</a>
-            </li>
-          </ul>
-        </li>
-        <li class='nav-item dropdown menu-mobile'>
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Деятельность</a>
-          <ul class="dropdown-menu">
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'proektnaia-deiatelnost' %}">Проектная деятельность</a>
-            </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'stroitelstvo' %}">Строительство</a>
-            </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'postavki-oborudovaniia' %}">Поставки оборудования</a>
-            </li>
-          </ul>
-        </li>
-        <li class='nav-item dropdown menu-mobile'>
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Промышленная безопасность</a>
-          <ul class="dropdown-menu">
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'zaiavlenie-o-politike-ooo-kgk-v-oblasti-promyshlennoi-bezopasnosti' %}">Заявление о политике ООО "КГК" в области промышленной безопасности</a>
-            </li>
-            <li class='dropdown-item'>
-              <a href="{% url 'simple-page' 'dokumenty-funktsionirovaniia-sistemy-upravleniia-promyshlennoi-bezopasnostiu' %}">Документы функционирования системы управления промышленной безопасностью</a>
-            </li>
-          </ul>
-        </li>
-        <li class='nav-item  menu-mobile'>
-          <a class='nav-link' href="{% url 'simple-page' 'vakansii' %}">Вакансии</a>
-        </li>
-        <li class='nav-item  menu-mobile'>
-          <a class='nav-link' href="{% url 'simple-page' 'kontakty' %}">Контакты</a>
-        </li>
+          {% endif %}
+        {% endfor %}
       </ul>
     </div>
     </header>
