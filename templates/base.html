@@ -78,6 +78,26 @@
           {% endif %}
         {% endfor %}
       </ul>
+      <ul class='nav nav-pills nav-stacked hidden-lg-up menu-mobile' style="display: none;">
+        {% for key, val in menu.items %}
+          {% if val|length_is:"1" %}
+            <li class='nav-item'>
+              <a class='nav-link' href="{% url 'simple-page' val.0.slug %}">{{val.0.name_in_menu}}</a>
+            </li>
+          {% else %}
+            <li class='nav-item dropdown'>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{key}}</a>
+              <ul class="dropdown-menu">
+                {% for btn in val%}
+                <li class='dropdown-item'>
+                  <a href="{% url 'simple-page' btn.slug %}">{{btn.name_in_menu}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
     </div>
     </header>
     <div class="main">
